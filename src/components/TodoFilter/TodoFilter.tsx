@@ -10,7 +10,22 @@ export const TodoFilter: React.FC<Props> = ({ onSelect, onChange }) => {
   const [query, setQuery] = useState('');
 
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onSelect(event.target.value as Filter);
+    const value = event.target.value;
+
+    switch (value) {
+      case 'all':
+        onSelect(Filter.All);
+        break;
+      case 'active':
+        onSelect(Filter.Active);
+        break;
+      case 'completed':
+        onSelect(Filter.Completed);
+        break;
+      default:
+        onSelect(Filter.All);
+        break;
+    }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
