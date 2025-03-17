@@ -18,7 +18,7 @@ export const TodoModal: React.FC<Props> = ({ todo, onClose }) => {
       setUser(userFromServer);
       setIsLoad(false);
     });
-  }, []);
+  }, [todo]);
 
   const handleClose = () => {
     onClose('');

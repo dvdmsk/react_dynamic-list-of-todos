@@ -10,16 +10,16 @@ export const TodoFilter: React.FC<Props> = ({ onSelect, onChange }) => {
   const [query, setQuery] = useState('');
 
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
+    const value = event.target.value.toLowerCase();
 
     switch (value) {
-      case 'all':
+      case Filter.All.toLowerCase():
         onSelect(Filter.All);
         break;
-      case 'active':
+      case Filter.Active.toLowerCase():
         onSelect(Filter.Active);
         break;
-      case 'completed':
+      case Filter.Completed.toLowerCase():
         onSelect(Filter.Completed);
         break;
       default:
@@ -45,9 +45,9 @@ export const TodoFilter: React.FC<Props> = ({ onSelect, onChange }) => {
       <p className="control">
         <span className="select">
           <select data-cy="statusSelect" onChange={handleSelect}>
-            <option value="all">All</option>
-            <option value="active">Active</option>
-            <option value="completed">Completed</option>
+            <option value="all">{Filter.All}</option>
+            <option value="active">{Filter.Active}</option>
+            <option value="completed">{Filter.Completed}</option>
           </select>
         </span>
       </p>
